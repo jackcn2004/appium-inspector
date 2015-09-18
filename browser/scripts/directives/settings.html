@@ -1,0 +1,71 @@
+<div layout="row" layout-fill>
+
+    <md-tabs md-selected="{android: 0, ios: 1}[settings.platform.active]" md-stretch-tabs="always" flex>
+        <md-tab id="settings-android" md-on-select="settings.platform.active='android'">
+            <md-tab-label>Android</md-tab-label>
+            <md-tab-body>
+                <section style="padding: 10px;">
+                    <md-subheader>Warnings:</md-subheader>
+                    <div layout="row" layout-align="center center"><div ng-show="warnJavaHome"><md-icon md-font-icon="icon-notification" style="font-size: 25px; height: 25px" aria-label="Settings" class="step"></md-icon> WARNING: enviroment variable JAVA_HOME must be set</div></div>
+                    <div layout="row" layout-align="center center"><div ng-show="warnAndroidHome"><md-icon md-font-icon="icon-notification" style="font-size: 25px; height: 25px" aria-label="Settings" class="step"></md-icon> WARNING: enviroment variable ANDROID_HOME must be set</div></div>
+
+                    <md-subheader>App under test</md-subheader>
+
+                    <md-radio-group ng-model="settings.activeCapabilities.android.appUnderTest">
+                        <md-radio-button value="apk">Select APK file</md-radio-button>
+                        <md-radio-button value="preinstalled">Use a preinstalled app</md-radio-button>
+                    </md-radio-group>
+
+                    <div layout layout="column" layout-fill ng-show="settings.activeCapabilities.android.appUnderTest==='apk'">
+                        <md-whiteframe class="md-whiteframe-z1" layout layout-fill layout-align="center center" ng-model="file.apk" style="padding: 20px;">
+                        <span ng-hide="settings.capabilities.android.app">
+                            <md-icon md-font-icon="icon-file-empty" style="font-size: 30px; height: 30px" aria-label="Settings" class="step"></md-icon> Drop your APK file here or
+                            <md-button class="md-primary md-raised" ng-model="file.apk">Select File</md-button>
+                        </span>
+                        <span ng-show="settings.capabilities.android.app">
+                            <md-icon md-font-icon="icon-file-empty" style="font-size: 30px; height: 30px" aria-label="Settings" class="step"></md-icon> {{settings.capabilities.android.app}}
+                            <md-button class="md-raised" ng-click="settings.capabilities.android.app=undefined">Clear</md-button>
+                        </span>
+                        </md-whiteframe>
+
+                        <span flex></span>
+                    </div>
+
+                    <div layout layout="row" ng-show="settings.activeCapabilities.android.appUnderTest==='preinstalled'" style="margin-left: 15px;">
+                        <md-input-container flex style="margin-left: 15px;">
+                            <label>Package Name</label>
+                            <input ng-model="settings.capabilities.android.appPackage">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Launch activity</label>
+                            <input ng-model="settings.capabilities.android.appActivity">
+                        </md-input-container>
+                    </div>
+
+                    <md-subheader>Device under test</md-subheader>
+
+                    <md-radio-group ng-model="settings.activeCapabilities.android.device">
+                        <md-radio-button value="realDevice" ng-click="settings.capabilities.android.deviceName='phone'">Real device</md-radio-button>
+                        <md-radio-button value="emulator" ng-click="settings.capabilities.android.deviceName='emulator'">Emulator</md-radio-button>
+                    </md-radio-group>
+                </section>
+            </md-tab-body>
+        </md-tab>
+        <md-tab id="settings-ios" md-on-select="settings.platform.active='ios'">
+            <md-tab-label>iOS</md-tab-label>
+            <md-tab-body>
+                View for Item #2 <br/>
+                data.selectedIndex = 1;
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>
+<!--<div class="md-actions" layout="row">-->
+<!--<span flex></span>-->
+<!--<md-button ng-click="answer('not useful')" class="md-primary">-->
+<!--Cancel-->
+<!--</md-button>-->
+<!--<md-button ng-click="answer('useful')" class="md-primary">-->
+<!--Apply-->
+<!--</md-button>-->
+<!--</div>-->

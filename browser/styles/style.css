@@ -1,0 +1,33 @@
+/* Styles go here */
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.fill-height {
+    height: 100%;
+    display: block;
+}
+
+.ui-splitbar {
+    z-index: 70 !important;
+}
+
+.ui-splitbar {
+    background-color: rgb(63,81,181) !important;
+}
+
+.log {
+    color: white;
+    font-family: 'Bitstream Vera Sans Mono','Courier New',monospace;
+    font-size: 11.998px;
+    line-height: 20px;
+}
+
+.glyphicon-chevron-left,
+.glyphicon-chevron-right,
+.glyphicon-chevron-up,
+.glyphicon-chevron-down{
+    color: #aaa;
+}

@@ -1,0 +1,37 @@
+<div ui-layout ="{flow : 'row', dividerSize: '4'}">
+    <div ui-layout-container>
+        <div style="width: 55px; height: 100%; display: block; background: rgb(63,81,181);">
+            <md-button class="md-fab md-mini" aria-label="Refresh" ng-click="refresh()" ng-disabled="!appium">
+                <md-icon md-font-icon="icon-camera" style="color: white; font-size: 20px; margin-bottom: 3px;" class="step"></md-icon>
+            </md-button>
+        </div>
+        <div ui-layout="{flow : 'column', dividerSize: '4'}" style="margin-left: 65px">
+            <div ui-layout-container class="screen">
+                <img alt="Embedded Image" ng-if='screenshot' ng-src="data:image/png;base64,{{screenshot}}" style="width: 100%"/>
+            </div>
+            <div ui-layout-container class="tree" >
+                <tree-mendous nodes="pageSource" select-mode="single">
+                    <ul ng-repeat="node in nodes" style="list-style: none; padding-left: 20px;">
+                        <li>
+                            <span style="white-space: nowrap" style="height: 24px; line-height: 24px;">
+                                <md-icon md-font-icon="{{{false: 'icon-plus-square-o', true: 'icon-minus-square-o'}[$expanded]}}" ng-show="node.children && node.children.length > 0" style="color: black; font-size: 20px;" class="step" tree-expand></md-icon>
+                                <span tree-select="select(node)" ng-class="{true: 'selected', false: ''}[$selected]">{{node['#name']}}</span>
+                            </span>
+                            <tree-branch nodes="node.children" ng-show="$expanded"></tree-branch>
+                        </li>
+                    </ul>
+                </tree-mendous>
+            </div>
+            <div ui-layout-container class="details" >
+                <table>
+                    <tr ng-repeat="(key, value) in currentNode.$">
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div ui-layout-container class="log" ></div>
+</div>

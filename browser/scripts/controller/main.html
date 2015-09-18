@@ -1,0 +1,14 @@
+<div ng-controller="MainCtrl"  class="fill-height" layout="column">
+    <md-content class="fill-height">
+        <md-tabs md-selected="selectedIndex" md-border-bottom  class="fill-height" ng-if="tabs.length > 0">
+            <md-tab ng-repeat="tab in tabs">
+                <md-tab-label>
+                    {{tab.title}}
+                </md-tab-label>
+                <md-tab-body>
+                    <dynamic src="{{tab.view}}" controller="{{tab.controller}}" file="{{tab.file}}"></dynamic>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

@@ -1,0 +1,26 @@
+<md-toolbar layout="row" class="md-primary">
+    <div flex layout="row" layout-align="start center">
+        <md-button class="md-button" aria-label="Snapshot" ng-disabled="!state.can('stop')" ng-click="snapshot()"  style="min-width: 100px">
+            <md-icon md-font-icon="icon-camera" style="font-size: 23px; margin-bottom: 3px;" class="step"></md-icon> Snapshot
+        </md-button>
+    </div>
+    <div flex layout="row" layout-align="end center">
+        <md-button class="md-button" aria-label="Play" ng-show="state.is('none')" ng-disabled="!state.can('start')" ng-click="state.start()"  style="min-width: 100px">
+            <md-icon md-font-icon="icon-play3" style="font-size: 23px; margin-bottom: 3px;" class="step"></md-icon> Start
+        </md-button>
+        <md-button class="md-button" aria-label="Stop" ng-show="state.is('running')" ng-disabled="!state.can('stop')" ng-click="state.stop()" style="min-width: 100px">
+            <md-icon md-font-icon="icon-stop2" style="font-size: 23px; margin-bottom: 3px;" class="step"></md-icon> Stop
+        </md-button>
+        <md-button class="md-button" aria-label="Settings" ng-hide="state.is('configuring')" ng-disabled="state.can('stop')" ng-click="state.configure()" style="min-width: 110px">
+            <md-icon md-font-icon="icon-cog" style="font-size: 23px; margin-bottom: 3px;" aria-label="Settings" class="step"></md-icon> Settings
+        </md-button>
+        <md-button class="md-button" aria-label="Cancel" ng-show="state.can('cancel')" ng-click="state.cancel()"  style="min-width: 100px">
+            <md-icon md-font-icon="icon-cross" style="font-size: 23px; margin-bottom: 3px;" class="step"></md-icon> Cancel
+        </md-button>
+        <md-button class="md-button" aria-label="Save" ng-show="state.can('save')" ng-click="state.save()" style="min-width: 100px">
+            <md-icon md-font-icon="icon-floppy-disk" style="font-size: 23px; margin-bottom: 3px;" aria-label="Settings" class="step"></md-icon> Save
+        </md-button>
+    </div>
+</md-toolbar>
+<inspector ng-if="!state.is('configuring')" screenshot="screenShot" pagesource="pageSource"></inspector>
+<settings ng-if="state.is('configuring')" appium="appium"></settings>
